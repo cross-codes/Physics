@@ -32,7 +32,7 @@ int main() {
   }
 
   if ((f(a) * f(b)) >= 0) {
-    std::cout << "Condition f(a) < f(b) not satisfied" << std::endl;
+    std::cout << "Condition f(a) * f(b) < 0 not satisfied" << std::endl;
     return -1;
   }
 
