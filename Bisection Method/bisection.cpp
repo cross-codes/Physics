@@ -1,7 +1,13 @@
 #include <bits/stdc++.h>
 
-// Bisection method on f(x)
-
+/**
+ * Real-valued function
+ *
+ * Code implementation for any real-valued single-variable function.
+ *
+ * @param x (double) The argument of the function.
+ * @return (double) The value of the function.
+ */
 double f(double x) { return (std::pow(x, 2) - 3); }
 
 int main() {
@@ -41,9 +47,10 @@ int main() {
     std::cout << "Iteration: " << i << ", Value of a " << a << ", Value of b "
               << b << std::endl;
 
-    arr.push_back(std::abs(b-a));
+    arr.push_back(std::abs(b - a));
+
     if (arr.size() > 1) {
-      dataFile << i << " " << arr[i] / arr[i-1] << std::endl;
+      dataFile << i << " " << arr[i] / arr[i - 1] << std::endl;
     }
 
     if (f(c) == 0 || (b - a) / 2.0 < TOL) {
