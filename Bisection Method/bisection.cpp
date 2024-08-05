@@ -1,12 +1,8 @@
-#include <cmath>
-#include <cstdlib>
-#include <fstream>
-#include <iostream>
-#include <ostream>
+#include <bits/stdc++.h>
 
 // Bisection method on f(x)
 
-double f(double x) { return (std::pow(x, 3) - x - 2); }
+double f(double x) { return (std::pow(x, 2) - 3); }
 
 int main() {
   double a, b, TOL;
@@ -37,14 +33,18 @@ int main() {
   // File to store iterations
   std::ofstream dataFile("/tmp/bisection.dat");
 
-  int n = 0;
+  int i = 0;
+  std::vector<double> arr;
 
-  while (n <= N_MAX) {
+  while (i <= N_MAX) {
     double c = (a + b) / 2.0;
-    std::cout << "Iteration: " << n << ", Value of a " << a << ", Value of b "
+    std::cout << "Iteration: " << i << ", Value of a " << a << ", Value of b "
               << b << std::endl;
 
-    dataFile << b - a << " " << n << std::endl;
+    arr.push_back(std::abs(b-a));
+    if (arr.size() > 1) {
+      dataFile << i << " " << arr[i] / arr[i-1] << std::endl;
+    }
 
     if (f(c) == 0 || (b - a) / 2.0 < TOL) {
       std::cout << "Approximate root found: " << c << std::endl;
@@ -58,11 +58,11 @@ int main() {
     else
       b = c;
 
-    n++;
+    i++;
   }
 
   std::cout << "ERROR: Method failed" << std::endl;
   dataFile.close();
 
-  return 0;
+  return -1;
 }
