@@ -32,30 +32,31 @@ int main() {
   }
 
   if ((f(a) * f(b)) >= 0) {
-    std::cout << "Condition f(a) * f(b) < 0 not satisfied. Exiting" << std::endl;
+    std::cout << "Condition f(a) * f(b) < 0 not satisfied. Exiting"
+              << std::endl;
     return -1;
   }
 
   // File to store iterations
-  std::ofstream dataFile("/tmp/bisection.dat");
+  std::ofstream data_file("/tmp/bisection.dat");
 
   int i = 0;
   std::vector<double> arr;
 
   while (i <= N_MAX) {
     double c = (a + b) / 2.0;
-    std::cout << "Iteration: " << i << ", Value of a " << a << ", Value of b "
-              << b << std::endl;
+    std::cout << "Iteration: " << i << ", Value of a " << std::setprecision(17)
+              << a << ", Value of b " << std::setprecision(17) << b << "\n";
 
     arr.push_back(std::abs(b - a));
 
     if (arr.size() > 1) {
-      dataFile << i << " " << arr[i] / arr[i - 1] << std::endl;
+      data_file << i << " " << arr[i] / arr[i - 1] << std::endl;
     }
 
     if (f(c) == 0 || (b - a) / 2.0 < TOL) {
       std::cout << "Approximate root found: " << c << std::endl;
-      dataFile.close();
+      data_file.close();
       system("gnuplot -p plot.gp");
       return 0;
     }
@@ -69,7 +70,7 @@ int main() {
   }
 
   std::cout << "ERROR: Method failed" << std::endl;
-  dataFile.close();
+  data_file.close();
 
   return -1;
 }
