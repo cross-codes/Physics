@@ -8,7 +8,7 @@
  * @param x (double) The argument of the function.
  * @return (double) The value of the function.
  */
-double f(double x) { return (std::pow(x, 2) - 3); }
+double f(double x) { return (std::pow(x, 1.5) - 13); }
 
 /**
  * Real-valued function derivative
@@ -19,13 +19,12 @@ double f(double x) { return (std::pow(x, 2) - 3); }
  * @param x (double) The argument of the function.
  * @return (double) The value of the function.
  */
-double f_prime(double x) { return (2 * x); }
+double f_prime(double x) { return (1.5 * sqrt(x)); }
 
 int main() {
   double x0, TOL;
 
   int N_MAX = 50;
-  double epsilon = std::pow(10, -9);
 
   std::cout << "Enter the value of a best-guess root (x0): ";
   std::cin >> x0;
@@ -39,7 +38,7 @@ int main() {
     double y = f(x0);
     double y_prime = f_prime(x0);
 
-    if (std::abs(y_prime) < epsilon)
+    if (std::abs(y_prime) < 1e-9)
       break;
 
     double x1 = x0 - (y / y_prime);

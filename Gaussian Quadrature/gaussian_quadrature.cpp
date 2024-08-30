@@ -8,13 +8,19 @@
  * @param x (double) The argument of the function.
  * @return (double) The value of the function.
  */
-long double f(long double x) { return (9.80 * 8) * (1.0 - exp(-x / 8.0)); }
+long double f(long double x) { return exp(std::pow(x, 2)); }
 
 int main() {
   // Data from the table corresponding to a three point division
   // Refer to https://classroom.google.com/u/1/c/NzAzMTAxNjU0MDcz
-  long double c[3] = {0.55555555555556, 0.88888888888889, 0.55555555555556};
-  long double x[3] = {+0.7745966692414834, 0, -0.7745966692414834};
+
+  // Abscissa
+  long double e[5] = {0, -0.5384693101056831, 0.5384693101056831,
+                      -0.9061798459386640, 0.9061798459386640};
+  // Weights
+  long double w[5] = {0.5688888888888889, 0.4786286704993665,
+                      0.4786286704993665, 0.2369268850561891,
+                      0.2369268850561891};
 
   long double a, b;
 
@@ -26,13 +32,13 @@ int main() {
 
   long double sum = 0;
 
-  for (int i = 0; i < 3; i++) {
-    long double xmod = ((b - a) * x[i] + (b + a)) / 2.0;
-    sum += c[i] * ((b - a) / 2.0) * f(xmod);
+  for (int i = 0; i < 5; i++) {
+    long double xi = ((b - a) * e[i] + (b + a)) / 2.0;
+    sum += w[i] * f(xi);
   }
 
   std::cout << "Approximate value of the integral: " << std::setprecision(17)
-            << sum << std::endl;
+            << ((b - a) / 2.0) * sum << std::endl;
 
   return 0;
 }
