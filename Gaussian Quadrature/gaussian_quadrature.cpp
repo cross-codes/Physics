@@ -8,19 +8,20 @@
  * @param x (double) The argument of the function.
  * @return (double) The value of the function.
  */
-long double f(long double x) { return exp(std::pow(x, 2)); }
+long double f(long double x) { return 1 / (1 + std::pow(x, 2)); }
 
 int main() {
-  // Data from the table corresponding to a three point division
+  // Data from the table corresponding to a ten point division
   // Refer to https://classroom.google.com/u/1/c/NzAzMTAxNjU0MDcz
 
   // Abscissa
-  long double e[5] = {0, -0.5384693101056831, 0.5384693101056831,
-                      -0.9061798459386640, 0.9061798459386640};
+  long double e[10] = {-0.97390653, -0.86506337, -0.67940957, -0.43339539,
+                       -0.14887434, 0.14887434,  0.43339539,  0.67940957,
+                       0.86506337,  0.97390653};
   // Weights
-  long double w[5] = {0.5688888888888889, 0.4786286704993665,
-                      0.4786286704993665, 0.2369268850561891,
-                      0.2369268850561891};
+  long double w[10] = {0.06667134, 0.14945135, 0.21908636, 0.26926672,
+                       0.29552422, 0.29552422, 0.26926672, 0.21908636,
+                       0.14945135, 0.06667134};
 
   long double a, b;
 
@@ -32,7 +33,7 @@ int main() {
 
   long double sum = 0;
 
-  for (int i = 0; i < 5; i++) {
+  for (int i = 0; i < (int)(sizeof(e) / sizeof(e[0])); i++) {
     long double xi = ((b - a) * e[i] + (b + a)) / 2.0;
     sum += w[i] * f(xi);
   }

@@ -8,7 +8,7 @@
  * @param x (double) The argument of the function.
  * @return (double) The value of the function.
  */
-double f(double x) { return exp(x); }
+double f(double x) { return __builtin_cos(x) / (1 + std::pow(__builtin_cos(x), 2)); }
 
 int main() {
   double a, b;

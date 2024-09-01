@@ -8,7 +8,7 @@
  * @param x (double) The argument of the function.
  * @return (double) The value of the function.
  */
-double f(double x) { return exp(std::pow(x, 2)); }
+double f(double x) { return (1 + exp(-x) * __builtin_sin(4 * x)); }
 
 int main() {
   long double a, b;
