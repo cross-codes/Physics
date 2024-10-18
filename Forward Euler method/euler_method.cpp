@@ -5,11 +5,11 @@
  *
  * Code implementation for any real-valued derivative
  *
- * @param x (long double) The first argument of the function.
+ * @param t (long double) The first argument of the function.
  * @param y (long double) The second argument of the function.
  * @return (long double) The value of the function.
  */
-long double y_prime(long double t, long double y) { return (t + y + t * y); }
+long double dydx(long double t, long double y) { return (t + y + t * y); }
 
 int main() {
   long double t0, y0, h, t1;
@@ -27,7 +27,7 @@ int main() {
   std::cin >> t1;
 
   while (t0 < t1) {
-    y0 += h * y_prime(t0, y0);
+    y0 += h * dydx(t0, y0);
     t0 += h;
   }
 
