@@ -26,16 +26,8 @@ double gen_normal_random(double mean, double stdev) {
 int32_t main() {
   // Classical method
 
-  double alpha;
-  long a, b;
-  std::cout << "Enter the value of the parameter (0 < α < 1): ";
-  std::cin >> alpha;
-
-  std::cout << "Enter the lower limit: ";
-  std::cin >> a;
-
-  std::cout << "Enter the upper limit: ";
-  std::cin >> b;
+  double alpha = 0.5;
+  long a = 0L, b = 1L;
 
   long double sum = 0.0L;
   for (int i = 0; i < 1e6; i++) {
