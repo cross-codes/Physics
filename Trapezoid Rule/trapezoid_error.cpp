@@ -1,3 +1,4 @@
+#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
 #include <bits/stdc++.h>
 
 /**
@@ -10,7 +11,7 @@
  */
 double f(double x) { return exp(x); }
 
-int main() {
+int32_t main() {
   double a, b;
 
   std::cout << "Enter the lower bound of the integral (a): ";

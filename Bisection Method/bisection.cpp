@@ -1,3 +1,4 @@
+#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
 #include <bits/stdc++.h>
 
 /**
@@ -8,9 +9,10 @@
  * @param x (double) The argument of the function.
  * @return (double) The value of the function.
  */
+
 double f(double x) { return (x * __builtin_sin(x)) - 1; }
 
-int main() {
+int32_t main() {
   double a, b, TOL;
 
   int N_MAX = 50;

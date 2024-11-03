@@ -1,3 +1,4 @@
+#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
 #include <bits/stdc++.h>
 
 /**
@@ -8,9 +9,11 @@
  * @param x (double) The argument of the function.
  * @return (double) The value of the function.
  */
-double f(double x) { return __builtin_cos(x) / (1 + std::pow(__builtin_cos(x), 2)); }
+double f(double x) {
+  return __builtin_cos(x) / (1 + std::pow(__builtin_cos(x), 2));
+}
 
-int main() {
+int32_t main() {
   double a, b;
   long long n;
 

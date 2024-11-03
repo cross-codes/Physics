@@ -1,3 +1,4 @@
+#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
 #include <bits/stdc++.h>
 
 /**
@@ -5,12 +6,9 @@
  * Here dydt = dy/dt = f(t, y) and
  * y(t0) = y0
  */
-long double dydt(long double t, long double y) {
-  return (t + std::pow(y, 2));
-}
+long double dydt(long double t, long double y) { return (t + std::pow(y, 2)); }
 
-int main() {
-
+int32_t main() {
   long double y0, t0, h, t_final;
 
   std::cout << "Enter the initial value (t0): ";

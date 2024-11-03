@@ -1,9 +1,8 @@
+#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
 #include <bits/stdc++.h>
 
-#define ll long long
-
-int main() {
-  ll x;
+int32_t main() {
+  long long x;
   int a, c, m;
   std::cout << "Enter the value of the multiplier (a): ";
   std::cin >> a;

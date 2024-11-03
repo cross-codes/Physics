@@ -1,3 +1,4 @@
+#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
 #include <bits/stdc++.h>
 
 /**
@@ -11,7 +12,7 @@
  */
 long double dydx(long double t, long double y) { return (t + y + t * y); }
 
-int main() {
+int32_t main() {
   long double t0, y0, h, t1;
 
   std::cout << "Enter the initial value (t0): ";

@@ -1,3 +1,4 @@
+#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
 #include <bits/stdc++.h>
 
 /**
@@ -10,7 +11,7 @@
  */
 double f(double x) { return (1 + exp(-x) * __builtin_sin(4 * x)); }
 
-int main() {
+int32_t main() {
   long double a, b;
   long long n;
 

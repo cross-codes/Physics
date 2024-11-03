@@ -1,3 +1,4 @@
+#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
 #include <bits/stdc++.h>
 
 /**
@@ -10,7 +11,7 @@
  */
 long double f(long double x) { return 1 / (1 + std::pow(x, 2)); }
 
-int main() {
+int32_t main() {
   // Data from the table corresponding to a ten point division
   // Refer to https://classroom.google.com/u/1/c/NzAzMTAxNjU0MDcz
 
