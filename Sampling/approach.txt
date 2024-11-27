@@ -1,0 +1,39 @@
+-------------------------------------------------------------------------------
+USE OF MAPS:
+
+In order to plot a histogram, it is necessary to segregate the data into "bins"
+Only when this binned data is passed to GNUPLOT, can it plot a histogram
+(or in this case, bezier fits). NumPy does all of this internally.
+
+In order to bin the data, the approach used is simple. Typically, we need to
+segregate data into intervals of some fixed bin width. I've chosen this to be
+0.01, and to store data this way, I intend to use an ordered data structure,
+with the "index" being able to identify the interval. The actual value stored
+in that index will be the number of points that fell in that interval.
+For example:
+                  {           ,            ,...}
+                   ^           ^
+                   0.00 - 0.01 0.01 - 0.02
+
+If I get a value of 0.667, I need to map this to the interval
+0.66 - 0.67. Based on the numbering, this corresponds to index 66. The obvious
+solution is then to simply multiply the number by 100, and consider it's GIF;
+In this case, it'd be [66.7] = 66, as expected.
+
+I cannot know the size beforehand, so it is best to use a red-black binary tree
+to be able to map indices to associated values. Reading from it is then iterative,
+although O(log n) in time complexity.
+
+-------------------------------------------------------------------------------
+EXPECTED OUTPUTS:
+
+The value of E' only increases (boost), so a ratio E'/E_max have a maximum value
+greater than 1.
+The best case is a factor γ(1 + β), and I've calculated it below:
+β = 0.01 -> 1.01
+β = 0.1  -> 1.11
+β = 0.9  -> 4.358
+β = 0.99 -> 14.106
+
+The curves match with these results.
+-------------------------------------------------------------------------------
