@@ -69,7 +69,8 @@ int32_t main() {
 
   std::cout.flush();
 
-  // Autonormalized importance sampling from N(0, 1)
+  // Autonormalized importance sampling from N(0, 1). Must extend domain,
+  // so the normalization condition holds
   sum = 0.0L;
   for (int i = 0; i < 1e6; i++) {
     double x = gen_normal_random(0, 1);

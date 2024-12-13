@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 
 /**
- * Estimating the integral of x^-α * exp(-x) from 0 to 1
+ * Estimating the integral of x^α * exp(-x) from 0 to 1
  * This program uses the CGL algorithm
  */
 
@@ -14,20 +14,20 @@ double gen_normal_random(double mean, double stdev) {
   return distribution(gen);
 }
 
-long double f(long double x, double alpha) {
+double f(long double x, double alpha) { return pow(x, alpha) * exp(-x); }
+
+double p(long double x) {
   if (x > 1 || x < 0)
-    return 0.0L;
-  else
-    return pow(x, alpha);
+    return 0.0;
+  return 1;
 }
 
-long double p(long double x) { return exp(-x); }
+double q(long double x) { return exp(-pow(x, 2) / 2) * 1 / (sqrt(2 * M_PI)); }
 
-long double q(long double x) {
-  return exp(-pow(x, 2) / 2) * 1 / (sqrt(2 * M_PI));
-}
-
-long double fp_by_q(long double x, double alpha) {
+double fp_by_q(long double x, double alpha) {
+  // For some reason I need to do this
+  if (p(x) == 0)
+    return 0;
   return f(x, alpha) * p(x) / q(x);
 }
 
@@ -46,7 +46,7 @@ int32_t main() {
     long double u = summand - M;
 
     M += u / i;
-    P = ((long double)(i - 1) / i) * (P + pow(u, 2) / i);
+    P = ((double)(i - 1) / i) * (P + u * u / i);
 
     data_file << i << " " << M << " " << P / i << "\n";
   }
