@@ -1,4 +1,5 @@
-#pragma GCC target("avx2,bmi2,popcnt,lzcnt")
+#pragma float_control(precise, on)
+
 #include <bits/stdc++.h>
 
 // Solution attempt for Q1
